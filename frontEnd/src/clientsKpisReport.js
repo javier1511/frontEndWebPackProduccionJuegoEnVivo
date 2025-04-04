@@ -8,6 +8,11 @@ const auth = new Auth()
 auth.protectedRoute();
 
 
+const logout = document.querySelector("#logout");
+
+logout.addEventListener("click", () => auth.logout())
+
+
 if (!token) {
     console.error("Token no encontrado en localStorage.");
 }
