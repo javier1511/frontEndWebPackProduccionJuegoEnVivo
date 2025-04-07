@@ -20,7 +20,7 @@ import Put from "./Put.js";
 import DeleteById from "./DeleteById.js";
 
 const getPlayers = async () => {
-    const getRequest = new Get('https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/players', token);
+    const getRequest = new Get('https://juegoenvivo1-701fa226890c.herokuapp.com/players', token);
     const data = await getRequest.get();
     console.log(data)
     return data; // Asegúrate de devolver los datos
@@ -175,7 +175,7 @@ form.addEventListener('submit', async (event) => {
     };
     const formId = id;
 
-    const putClientRequest = new Put(`https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/players/${formId}`, formClientData);
+    const putClientRequest = new Put(`https://juegoenvivo1-701fa226890c.herokuapp.com/players/${formId}`, formClientData);
     await putClientRequest.sendPutRequest();
     popupClient.closePopup();
 });
@@ -192,7 +192,7 @@ deleteButton.addEventListener('click', async (event) => {
     }
 
     const token = localStorage.getItem("token")
-    const deleteClientByIdRequest = new DeleteById(`https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com
+    const deleteClientByIdRequest = new DeleteById(`https://juegoenvivo1-701fa226890c.herokuapp.com
 /players/${idDelete}`, token );
     const result = await deleteClientByIdRequest.sendDeleteByIdRequest();
 

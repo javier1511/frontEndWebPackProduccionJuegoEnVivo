@@ -7,7 +7,7 @@ const login = async (event) => {
     const password = document.querySelector("#password").value;
 
     try {
-        const response = await fetch('https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/auth/signin', {
+        const response = await fetch('https://juegoenvivo1-701fa226890c.herokuapp.com/auth/signin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
@@ -44,7 +44,7 @@ loginForm.addEventListener("submit", login);
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
 
-    fetch('https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com
+    fetch('https://juegoenvivo1-701fa226890c.herokuapp.com
 /auth/signin', {
         method: 'POST',
         headers: {

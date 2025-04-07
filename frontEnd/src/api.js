@@ -1,6 +1,6 @@
 
 //SALES//
-const API_URL = "https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/players";
+const API_URL = "https://juegoenvivo1-701fa226890c.herokuapp.com/players";
 
 const getPlayers = async () => {
     try {

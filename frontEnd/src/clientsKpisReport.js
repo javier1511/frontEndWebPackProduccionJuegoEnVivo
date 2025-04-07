@@ -18,7 +18,7 @@ if (!token) {
 }
 
 const getPlayersKpis = async () => {
-    const getPlayersKpisRequest = new Get("https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/sales/summary", token);
+    const getPlayersKpisRequest = new Get("https://juegoenvivo1-701fa226890c.herokuapp.com/sales/summary", token);
     const data = await getPlayersKpisRequest.get();
     return data;
 };
@@ -176,7 +176,7 @@ enviarMensajeBtn.addEventListener("click", async () => {
 
     try {
         // Enviar la solicitud POST
-        const response = await fetch("https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/sendsms/", {
+        const response = await fetch("https://juegoenvivo1-701fa226890c.herokuapp.com/sendsms/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

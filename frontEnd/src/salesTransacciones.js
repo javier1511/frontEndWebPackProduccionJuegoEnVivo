@@ -20,7 +20,7 @@ logout.addEventListener("click", () => auth.logout())
 
 
 const getTransactions = async () => {
-    const getSalesrequest = new Get('https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/sales', token);
+    const getSalesrequest = new Get('https://juegoenvivo1-701fa226890c.herokuapp.com/sales', token);
     const data = await getSalesrequest.get()
     console.log(data)
     return data
@@ -187,7 +187,7 @@ const getSalesTransactions = async () => {
 
 
       
-        const response = await fetch('https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com
+        const response = await fetch('https://juegoenvivo1-701fa226890c.herokuapp.com
 /sales');
         
         if (!response.ok) {
@@ -365,7 +365,7 @@ if(errors.length > 0){
         return;
     }
 
-const deleteSalesByIdRequest = new DeleteById(`https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/${salesId}`, token);
+const deleteSalesByIdRequest = new DeleteById(`https://juegoenvivo1-701fa226890c.herokuapp.com/${salesId}`, token);
 const resultDelete = await deleteSalesByIdRequest.sendDeleteByIdRequest();
 
 if(resultDelete){

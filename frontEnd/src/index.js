@@ -135,7 +135,7 @@ form.addEventListener("submit", async (event) => {
 
     
     // Crear una instancia de la clase y hacer la solicitud
-    const postRequest = new Post('https://juegoenvivodiamantetampico-5f11edf34527.herokuapp.com/players', formData);
+    const postRequest = new Post('https://juegoenvivo1-701fa226890c.herokuapp.com/players', formData);
     await postRequest.sendPostRequest();
     
 });
