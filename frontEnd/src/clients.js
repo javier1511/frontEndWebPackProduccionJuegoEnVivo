@@ -58,7 +58,14 @@ const displayUsers = async () => {
         })
         .map((object) => {
             const { _id, date, time, name, mobile, email, address, curp, gender } = object;
-            const formattedDate = new Date(date).toLocaleDateString("es-MX");
+            let formattedDate = "";
+            if (date) {
+                const [year, month, day] = date.split('T')[0].split('-');
+                formattedDate = `${day}/${month}/${year}`;
+            }
+        
+    
+    
 
             return `
      
