@@ -365,7 +365,7 @@ if(errors.length > 0){
         return;
     }
 
-const deleteSalesByIdRequest = new DeleteById(`https://juegoenvivo1-701fa226890c.herokuapp.com/${salesId}`, token);
+const deleteSalesByIdRequest = new DeleteById(`https://juegoenvivo1-701fa226890c.herokuapp.com/sales/${salesId}`, token);
 const resultDelete = await deleteSalesByIdRequest.sendDeleteByIdRequest();
 
 if(resultDelete){
