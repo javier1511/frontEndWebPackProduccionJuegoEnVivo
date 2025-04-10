@@ -15,7 +15,7 @@ logout.addEventListener("click", () => auth.logout())
 import Get from "./Get.js";
 
 const getCountByDate = async () => {
-    const getCountRequest = new Get("https://juegoenvivo1-701fa226890c.herokuapp.com/countplayers", token);
+    const getCountRequest = new Get("http://localhost:4000/countplayers", token);
     const data = await getCountRequest.get();
     console.log(data);
     return data;
@@ -35,17 +35,17 @@ const displayCountPlayersByDate = async () => {
             if (queryCount === '') return true;
 
             // Convierte la fecha del objeto al formato YYYY-MM-DD
-            let [day, month, year] = eventDataCount._id.split('/');
+            let [day, month, year] = eventDataCount.date.split('/');
             let formattedDate = `${year}-${month}-${day}`;
 
             return formattedDate === queryCount;
         })
         .map((object) => {
-            const { _id, totalClientes } = object;
+            const { date, totalClientes } = object;
 
             return `    
             <div class="clientsReport__container">
-                <p class="clientsReport__data">${_id}</p>
+                <p class="clientsReport__data">${date}</p>
                 <p class="clientsReport__data">${totalClientes}</p>
             </div>
             `;

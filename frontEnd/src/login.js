@@ -17,7 +17,7 @@ const login = async (event) => {
             const data = await response.json();
             localStorage.setItem('token', data.token);
             alert('Inicio de sesión exitoso');
-             window.location.href = 'http://juegoenvivodiamantecasino.com/sales.html';
+             window.location.href = '/sales.html';
         } else {
             const errorData = await response.json(); // Extraer datos del error del servidor
             alert(errorData.message);
