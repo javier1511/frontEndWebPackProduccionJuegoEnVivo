@@ -12,13 +12,12 @@ const logout = document.querySelector("#logout");
 
 logout.addEventListener("click", () => auth.logout())
 
-
 if (!token) {
     console.error("Token no encontrado en localStorage.");
 }
 
 const getPlayersKpis = async () => {
-    const getPlayersKpisRequest = new Get("https://juegoenvivo1-701fa226890c.herokuapp.com/sales/summary", token);
+    const getPlayersKpisRequest = new Get("http://localhost:4000/sales/summary", token);
     const data = await getPlayersKpisRequest.get();
     return data;
 };
@@ -35,6 +34,15 @@ const inputKpisPago = document.querySelector("#inputKpisPago");
 // Inputs de rango de fecha
 const inputFechaDesde = document.querySelector("#inputFechaDesde");
 const inputFechaHasta = document.querySelector("#inputFechaHasta");
+
+const formatearMoneda = (cantidad) => {
+    if (isNaN(cantidad)) return "$0.00";
+    return Number(cantidad).toLocaleString('es-MX', {
+        style: 'currency',
+        currency: 'MXN'
+    });
+};
+
 
 const displayKpisPlayers = async () => {
     let queryMobile = inputKpisMobile?.value.trim().toLowerCase() || '';
@@ -96,11 +104,12 @@ const displayKpisPlayers = async () => {
             return `
                 <p class="kpis__data">${player.name}</p>
 <p class="kpis__data kpis__mobile">${player.mobile}</p>
-                <p class="kpis__data">${totalCash}</p>
-                <p class="kpis__data">${totalCredit}</p>
-                <p class="kpis__data">${totalDollars}</p>
-                <p class="kpis__data">${totalPayment}</p>
-                <p class="kpis__data">${netwin}</p>
+            <p class="kpis__data">${formatearMoneda(totalCash)}</p>
+<p class="kpis__data">${formatearMoneda(totalCredit)}</p>
+<p class="kpis__data">${formatearMoneda(totalDollars)}</p>
+<p class="kpis__data">${formatearMoneda(totalPayment)}</p>
+<p class="kpis__data">${formatearMoneda(netwin)}</p>
+
                 <p class="kpis__data">${formattedDateKpis}</p>
             `;
         })
@@ -176,7 +185,7 @@ enviarMensajeBtn.addEventListener("click", async () => {
 
     try {
         // Enviar la solicitud POST
-        const response = await fetch("https://juegoenvivo1-701fa226890c.herokuapp.com/sendsms/", {
+        const response = await fetch("http://localhost:4000/sendsms/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -228,7 +237,10 @@ document.addEventListener("click", (e) => {
     kpisDataContainer.innerHTML = dataDisplayKpis || "<p>No se encontraron transacciones.</p>";
 };
 
-displayKpisPlayers();
+(async () => {
+    await displayKpisPlayers();
+})();
+
 
 // Escuchar todos los inputs
 [
@@ -252,3 +264,4 @@ const crmButton = document.querySelector("#abrirCrm");
 crmButton.addEventListener("click", () => kpisPopup.openPopup())
 const kpisModalCloseButton = document.querySelector(".kpis__popup-close");
 kpisModalCloseButton.addEventListener("click", () => kpisPopup.closePopup())
+
