@@ -20,7 +20,7 @@ logout.addEventListener("click", () => auth.logout())
 
 
 const getTransactions = async () => {
-    const getSalesrequest = new Get('https://juegoenvivo1-701fa226890c.herokuapp.com/sales', token);
+    const getSalesrequest = new Get('https://juegoenvivo1-701fa226890c.herokuapp.com', token);
     const data = await getSalesrequest.get()
     console.log(data)
     return data
@@ -67,7 +67,7 @@ const displayTransactions = async () => {
         return matchesName && matchesDate;
     })
     .map((object) => {
-        const {_id, player, name, cash, credit, dollars, date, time,cashIn,payment} = object;
+        const {_id, player, user, name, cash, credit, dollars, date, time,cashIn,payment} = object;
 
 
         let formattedDate = "";
@@ -93,9 +93,12 @@ const displayTransactions = async () => {
     data-name="${name}" 
     data-cash="${cash}"
     data-payment="${payment}"
+    data-user="${user}"
     data-cashin="${cashIn}">
     ${name}
 </p>
+
+  <p class="transactions__data-value">${user}</p>
         
     
 
@@ -106,11 +109,12 @@ const displayTransactions = async () => {
         <p class="transactions__data-value">${time}</p>
         
     
-
-    <p class="transactions__data-value">${formatearMoneda(cash)}</p>
-<p class="transactions__data-value">${formatearMoneda(dollars)}</p>
-<p class="transactions__data-value">${formatearMoneda(credit)}</p>
 <p class="transactions__data-value">${formatearMoneda(cashIn)}</p>
+    <p class="transactions__data-value">${formatearMoneda(cash)}</p>
+    <p class="transactions__data-value">${formatearMoneda(credit)}</p>
+<p class="transactions__data-value">${formatearMoneda(dollars)}</p>
+
+
 <p class="transactions__data-value">${formatearMoneda(payment)}</p>
 
 
@@ -364,7 +368,7 @@ if(errors.length > 0){
         return;
     }
 
-const deleteSalesByIdRequest = new DeleteById(`https://juegoenvivo1-701fa226890c.herokuapp.com/sales/${salesId}`, token);
+const deleteSalesByIdRequest = new DeleteById(`https://juegoenvivo1-701fa226890c.herokuapp.com/${salesId}`, token);
 const resultDelete = await deleteSalesByIdRequest.sendDeleteByIdRequest();
 
 if(resultDelete){

@@ -17,7 +17,7 @@ if (!token) {
 }
 
 const getPlayersKpis = async () => {
-    const getPlayersKpisRequest = new Get("http://localhost:4000/sales/summary", token);
+    const getPlayersKpisRequest = new Get("https://juegoenvivo1-701fa226890c.herokuapp.com/summary", token);
     const data = await getPlayersKpisRequest.get();
     return data;
 };
