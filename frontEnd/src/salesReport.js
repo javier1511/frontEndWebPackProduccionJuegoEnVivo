@@ -86,7 +86,7 @@ const selectReport = (reports) => {
 
         const cashInElement = document.createElement("p");
         cashInElement.classList.add("sales-report__dynamic__text");
-        cashInElement.textContent = formatearMoneda(report.totalCashIn)
+        cashInElement.textContent = formatearMoneda(r9+eport.totalCashIn)
         row.appendChild(cashInElement);
         const efectivoElement = document.createElement("p");
         efectivoElement.classList.add("sales-report__dynamic__text");

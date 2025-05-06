@@ -6,13 +6,6 @@ import Auth from "./auth.js";
 const auth = new Auth()
 auth.protectedRoute();
 
-const formatearMoneda = (cantidad) => {
-    if(isNaN(cantidad)) return "0.00";
-    return Number(cantidad).toLocaleString('es-MX', {
-        style: 'currency',
-        currency: 'MXN'
-    }) 
-}
 
 
 const logout = document.querySelector("#logout");
